@@ -1,11 +1,13 @@
 package jwt
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/hello_gin/pkg/e"
 	"github.com/hello_gin/pkg/util"
 	"net/http"
-	"time"
+  "reflect"
+  "time"
 )
 
 func JWT() gin.HandlerFunc {
@@ -16,7 +18,16 @@ func JWT() gin.HandlerFunc {
 
 		code = e.SUCCESS
 
-		token := c.Query("token")
+		//token := c.Query("token")
+
+		for k, v := range c.Request.Header {
+      fmt.Println("key ", k, v)
+		}
+
+    fmt.Println(c.Request.Header["Token"][0])
+    fmt.Println(reflect.TypeOf(c.Request.Header["Token"]))
+
+    token := c.Request.Header["Token"][0]
 
 		if token == "" {
 			code = e.INVALID_PARAMS
