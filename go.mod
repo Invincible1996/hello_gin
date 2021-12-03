@@ -33,12 +33,12 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
-replace (
-	github.com/hello_gin/conf => ../conf
-	github.com/hello_gin/middleware => ../middleware
-	github.com/hello_gin/models => ../models
-	github.com/hello_gin/pkg/e => ../pkg/e
-	github.com/hello_gin/pkg/setting => ../pkg/setting
-	github.com/hello_gin/pkg/util => ../pkg/util
-	github.com/hello_gin/routers => ../routers
-)
+//replace (
+//	github.com/hello_gin/conf => ../conf
+//	github.com/hello_gin/middleware => ../middleware
+//	github.com/hello_gin/models => ../models
+//	github.com/hello_gin/pkg/e => ../pkg/e
+//	github.com/hello_gin/pkg/setting => ../pkg/setting
+//	github.com/hello_gin/pkg/util => ../pkg/util
+//	github.com/hello_gin/routers => ../routers
+//)

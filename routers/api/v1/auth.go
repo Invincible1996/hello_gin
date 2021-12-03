@@ -1,13 +1,13 @@
 package v1
 
 import (
-  "fmt"
-  "github.com/astaxie/beego/validation"
+	"fmt"
+	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 	"github.com/hello_gin/models"
 	"github.com/hello_gin/pkg/e"
+	"github.com/hello_gin/pkg/logging"
 	"github.com/hello_gin/pkg/util"
-	"log"
 	"net/http"
 )
 
@@ -36,7 +36,7 @@ func GetAuth(c *gin.Context) {
 		if isExist {
 			token, err := util.GenerateToken(username, password)
 			if err != nil {
-        fmt.Println("token 生成失败",err)
+				fmt.Println("token 生成失败", err)
 				code = e.ERROR_AUTH_TOKEN
 			} else {
 				data["token"] = token
@@ -47,7 +47,8 @@ func GetAuth(c *gin.Context) {
 		}
 	} else {
 		for _, err := range valid.Errors {
-			log.Println(err.Key, err.Message)
+			//log.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 	c.JSON(http.StatusOK, gin.H{
